@@ -99,24 +99,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         tableView.reloadData()
     }
-    //検索ボタン押下時の呼び出しメソッド
-    func SearchButtonClicked(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchBar.endEditing(true)
-        
-        let realm = try! Realm()
-        
-        // Query using a predicate string
-        taskArray = realm.objects(Task.self).filter("category = %@", searchBar.text!)
-        
-        tableView.reloadData()
-    }
-    
-    //検索文字列変更時の呼び出しメソッド
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
-        
-        //テーブルビューを再読み込みする。
-        tableView.reloadData()
-    }
     
     // 各セルを選択した時に実行されるメソッド
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
